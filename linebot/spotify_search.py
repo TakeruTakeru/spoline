@@ -1,10 +1,11 @@
 
+
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
+
+
 class taketify(spotipy.Spotify):
-
-    import spotipy
-    from spotipy.oauth2 import SpotifyClientCredentials
-
-
 
 
     def spotify_image(name):
