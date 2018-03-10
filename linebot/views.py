@@ -40,7 +40,8 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
+            if text == "aiueo":
+                reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
