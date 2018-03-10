@@ -37,11 +37,11 @@ def callback(request):
     for e in request_json['events']:
         reply_token = e['replyToken']  # 返信先トークンの取得
         message_type = e['message']['type']   # typeの取
-        message_text = e["message"]["text"]
 
-        if message_type == 'text' and message_text == "マシュメロ":
-            text = e['message']['text']    # 受信メッセージの取得
-            reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
+        if message_type == 'text':
+            text = e['message']['text']
+            if text = "マシュメロ":  # 受信メッセージの取得
+                reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
