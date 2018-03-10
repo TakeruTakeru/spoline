@@ -16,8 +16,9 @@ HEADER = {
 def index(request):
     return HttpResponse("This is bot api.")
 
-def reply_text(reply_token, text):
-    reply = taketify.spotify_image(text)
+def reply_text(reply_token, text, name):
+    artist = name
+    reply = taketify.spotify_image(artist)
     payload = {
           "replyToken":reply_token,
           "messages":[
@@ -41,7 +42,7 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
+            reply += reply_text(reply_token, text, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
