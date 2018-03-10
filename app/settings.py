@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q1shjhzv0@v_n_4sqi!6)n2j@s8c#(%_cd*(_5pesd@4*58)u%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'evening-depths-59364.herokuapp.com']
 
