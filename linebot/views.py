@@ -40,7 +40,7 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            if text == "aiueo":
+            if text == "お米":
                 reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
 
