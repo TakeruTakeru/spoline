@@ -1,5 +1,5 @@
 
-class taketify():
+class taketify(spotipy.Spotify):
 
     import spotipy
     from spotipy.oauth2 import SpotifyClientCredentials
