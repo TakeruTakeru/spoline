@@ -18,8 +18,9 @@ class taketify(spotipy.Spotify):
         search_str = name
         result = spotify.search(q="artist:" + search_str, limit=1, type="artist")
         item = result["artists"]["items"]
-        image_url = item["images"]["url"]
-        return image_url
+        if len(item) > 0:
+            artist = item[0]
+            return artist['images'][0]['url']
 
     def spotify_name(name):
 
@@ -33,3 +34,5 @@ class taketify(spotipy.Spotify):
         item = result["artists"]["items"]
         name = item["name"]
         return name
+
+a = taketify.spotify_image("マシュメロ")
