@@ -36,9 +36,11 @@ def callback(request):
     request_json = json.loads(request.body.decode('utf-8')) # requestの情報をdict形式で取得
     for e in request_json['events']:
         reply_token = e['replyToken']  # 返信先トークンの取得
-        message_type = e['message']['type']   # typeの取得
+        message_type = e['message']['type']   # typeの取
+        if message_type == "text":
+            message_check = e["message"]["text"]
 
-        if message_type == 'text':
+        if message_type == 'text' and message_check == "マシュメロ":
             text = e['message']['text']    # 受信メッセージの取得
             reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
