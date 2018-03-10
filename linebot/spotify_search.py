@@ -1,8 +1,9 @@
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-
 
 class taketify():
+
+    import spotipy
+    from spotipy.oauth2 import SpotifyClientCredentials
+
 
     client_id = 'e6447eec6f8448d7a80b1c45a8237034'
     client_secret = '98e4103299954b18a51fa991db7d6741'
