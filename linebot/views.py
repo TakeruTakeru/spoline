@@ -4,6 +4,7 @@ import json
 import random
 import requests
 from .load_serif import osomatsu_serif
+from .spotify_search import taketify
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = 'bdtGx1Xb7CIqX3mFQCDgzjuVPt8kMbs+ZinutU4QsCiXiJfrO7EzXv7N8eF1vilzCWN6HVEAh2ldyZCokoGki0GVVpnrmQcVv1NxuWN9xKP+93xU5+ZtH01BT0R3BXjkFUmpmZ3d/YSSJSU0qgdFRgdB04t89/1O/w1cDnyilFU='
@@ -16,7 +17,8 @@ def index(request):
     return HttpResponse("This is bot api.")
 
 def reply_text(reply_token, text):
-    reply = "https://i.scdn.co/image/f3dd808a2eff56552da545beb5b0fc5d3892817a"
+    artist_name = text
+    reply = taketify.spotify_image(artist_name)
     payload = {
           "replyToken":reply_token,
           "messages":[
@@ -40,8 +42,7 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            if text == "お米":
-                reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
+            reply += reply_text(reply_token, text)   # LINEにセリフを送信する関数
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
