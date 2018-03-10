@@ -21,8 +21,9 @@ def reply_text(reply_token, text):
           "replyToken":reply_token,
           "messages":[
                 {
-                    "type":"text",
-                    "text": reply
+                    "type":"image",
+                    "originalContentUrl": reply,
+                    "previewImageUrl": reply,
                 }
             ]
     }
