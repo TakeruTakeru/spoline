@@ -17,8 +17,7 @@ def index(request):
     return HttpResponse("This is bot api.")
 
 def reply_text(reply_token, text):
-    artist_name = text
-    reply = taketify.spotify_image(artist_name)
+    reply = taketify.spotify_image(text)
     payload = {
           "replyToken":reply_token,
           "messages":[
