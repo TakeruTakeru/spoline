@@ -40,10 +40,8 @@ def reply_sample(reply_token, text, name):
           "replyToken":reply_token,
           "messages":[
                 {
-                    "type":"audio",
-                    "originalContentUrl": reply,
-                    " duration": 6000
-                }
+                    "type":"text",
+                    "text":reply,
             ]
     }
 
