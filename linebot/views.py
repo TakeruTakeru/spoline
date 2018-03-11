@@ -41,7 +41,8 @@ def reply_sample(reply_token, text, name):
           "messages":[
                 {
                     "type":"text",
-                    "text":reply,
+                    "text":reply
+                }
             ]
     }
 
