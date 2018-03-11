@@ -3,7 +3,6 @@ from django.http import HttpResponse
 import json
 import random
 import requests
-from .load_serif import osomatsu_serif
 from .spotify_search import taketify
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
@@ -16,7 +15,7 @@ HEADER = {
 def index(request):
     return HttpResponse("This is bot api.")
 
-def reply_text(reply_token, text, name):
+def reply_image(reply_token, text, name):
     artist = name
     reply = taketify.spotify_image(artist)
     payload = {
@@ -33,6 +32,24 @@ def reply_text(reply_token, text, name):
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
     return reply
 
+def reply_sample(reply_token, text, name):
+    artist = name
+    url_before = taketify.spotify_sample_audio(artist)
+    reply = url_before.replace("?cid=e6447eec6f8448d7a80b1c45a8237034", "")
+    payload = {
+          "replyToken":reply_token,
+          "messages":[
+                {
+                    "type":"audio",
+                    "originalContentUrl": reply,
+                    " duration": 6000
+                }
+            ]
+    }
+
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    return reply
+
 def callback(request):
     reply = ""
     request_json = json.loads(request.body.decode('utf-8')) # requestの情報をdict形式で取得
@@ -42,7 +59,8 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            reply += reply_text(reply_token, text, text)   # LINEにセリフを送信する関数
+            reply += reply_image(reply_token, text, text)   # LINEにセリフを送信する関数
+
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
