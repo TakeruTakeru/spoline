@@ -60,7 +60,7 @@ def callback(request):
         if message_type == 'text':
             text = e['message']['text']
             reply += reply_image(reply_token, text, text)   # LINEにセリフを送信する関数
-
+            reply += reply_sample(reply_token, text, text)
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
