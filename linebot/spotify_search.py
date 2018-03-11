@@ -46,11 +46,13 @@ class taketify(spotipy.Spotify):
             af = item[0]
             theid = af["id"]
             results = spotify.artist_top_tracks(theid)
-            items = results["tracks"][0]
-            a = items["preview_url"]
-            if a == None:
-                a = "Sorry, no contents has been detected.."
-            return a
+            items = results["tracks"][:3]
+            for i in reversed(items):
+                if i["preview_url"]:
+                    a = i["preview_url"]
+                elif a == None:
+                    a = "Sorry, no contents has been detected.."
+        return a
 
 
     def spotify_sample_image(name):
