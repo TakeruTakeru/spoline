@@ -47,11 +47,12 @@ class taketify(spotipy.Spotify):
             theid = af["id"]
             results = spotify.artist_top_tracks(theid)
             items = results["tracks"][:3]
+            a = ""
             for i in reversed(items):
                 if i["preview_url"]:
                     a = i["preview_url"]
-                    if a == None:
-                        a = "Sorry, no contents has been detected.."
+            if a == "":
+                a = "Sorry, no contents has been detected.."
         return a
 
 
