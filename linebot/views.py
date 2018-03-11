@@ -4,6 +4,7 @@ import json
 import random
 import requests
 from .spotify_search import taketify
+import re
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
 ACCESS_TOKEN = 'bdtGx1Xb7CIqX3mFQCDgzjuVPt8kMbs+ZinutU4QsCiXiJfrO7EzXv7N8eF1vilzCWN6HVEAh2ldyZCokoGki0GVVpnrmQcVv1NxuWN9xKP+93xU5+ZtH01BT0R3BXjkFUmpmZ3d/YSSJSU0qgdFRgdB04t89/1O/w1cDnyilFU='
@@ -58,8 +59,12 @@ def callback(request):
 
         if message_type == 'text':
             text = e['message']['text']
-            reply += reply_image(reply_token, text, text)   # LINEにセリフを送信する関数
-            reply += reply_sample(reply_token, text, text)
+            text_check = re.match(r"^画像", text)
+            if text:
+                image = text.replace("画像", "")
+                reply += reply_image(reply_token, text, text)  # LINEにセリフを送信する関数
+            else:
+                reply += reply_sample(reply_token, text, text)
     return HttpResponse(reply)
 
 # 先ほどのおそ松のセリフ一覧をimport
