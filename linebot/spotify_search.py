@@ -47,8 +47,8 @@ class taketify(spotipy.Spotify):
             theid = af["id"]
             results = spotify.artist_top_tracks(theid)
             items = results["tracks"][0]
-            print(items)
             a = items["preview_url"]
+            return a
 
 
     def spotify_sample_image(name):
