@@ -48,6 +48,8 @@ class taketify(spotipy.Spotify):
             results = spotify.artist_top_tracks(theid)
             items = results["tracks"][0]
             a = items["preview_url"]
+            if a == None:
+                a = "Sorry, no contents has been detected.."
             return a
 
 

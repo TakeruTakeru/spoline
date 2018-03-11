@@ -34,6 +34,7 @@ def reply_image(reply_token, text, name):
     return reply
 
 def reply_sample(reply_token, text, name):
+    
     artist = name
     url_before = taketify.spotify_sample_audio(artist)
     reply = url_before.replace("?cid=e6447eec6f8448d7a80b1c45a8237034", "")
