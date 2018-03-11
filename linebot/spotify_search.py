@@ -50,8 +50,8 @@ class taketify(spotipy.Spotify):
             for i in reversed(items):
                 if i["preview_url"]:
                     a = i["preview_url"]
-                elif a == None:
-                    a = "Sorry, no contents has been detected.."
+                    if a == None:
+                        a = "Sorry, no contents has been detected.."
         return a
 
 
