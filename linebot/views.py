@@ -60,7 +60,7 @@ def callback(request):
         if message_type == 'text':
             text = e['message']['text']
             text_check = re.match(r"^画像", text)
-            if text:
+            if text_check:
                 image = text.replace("画像", "")
                 reply += reply_image(reply_token, text, text)  # LINEにセリフを送信する関数
             else:
