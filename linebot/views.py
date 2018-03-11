@@ -62,7 +62,7 @@ def callback(request):
             text_check = re.match(r"^画像", text)
             if text_check:
                 image = text.replace("画像", "")
-                reply += reply_image(reply_token, text, text)  # LINEにセリフを送信する関数
+                reply += reply_image(reply_token, image, image)  # LINEにセリフを送信する関数
             else:
                 reply += reply_sample(reply_token, text, text)
     return HttpResponse(reply)
