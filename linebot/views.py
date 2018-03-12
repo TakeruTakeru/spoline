@@ -5,9 +5,11 @@ import random
 import requests
 from .spotify_search import taketify
 import re
+import os
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
-ACCESS_TOKEN = 'bdtGx1Xb7CIqX3mFQCDgzjuVPt8kMbs+ZinutU4QsCiXiJfrO7EzXv7N8eF1vilzCWN6HVEAh2ldyZCokoGki0GVVpnrmQcVv1NxuWN9xKP+93xU5+ZtH01BT0R3BXjkFUmpmZ3d/YSSJSU0qgdFRgdB04t89/1O/w1cDnyilFU='
+ACCESS_TOKEN = os.environ["LINE_TOKEN"]
+
 HEADER = {
     "Content-Type": "application/json",
     "Authorization": "Bearer " + ACCESS_TOKEN
@@ -34,10 +36,12 @@ def reply_image(reply_token, text, name):
     return reply
 
 def reply_sample(reply_token, text, name):
-    
+
     artist = name
     url_before = taketify.spotify_sample_audio(artist)
-    reply = url_before.replace("?cid=e6447eec6f8448d7a80b1c45a8237034", "")
+    client_id = os.environ["SPOTIFY_CLIENT_ID"]
+    del_str = "?cid=" + client_id
+    reply = url_before.replace(del_str, "")
     payload = {
           "replyToken":reply_token,
           "messages":[

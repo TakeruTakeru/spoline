@@ -1,3 +1,4 @@
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
@@ -5,15 +6,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 
 class taketify(spotipy.Spotify):
 
-    client_id = 'e6447eec6f8448d7a80b1c45a8237034'
-    client_secret = '98e4103299954b18a51fa991db7d6741'
-    client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials(client_id, client_secret)
-    spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
 
     def spotify_image(name):
-        client_id = 'e6447eec6f8448d7a80b1c45a8237034'
-        client_secret = '98e4103299954b18a51fa991db7d6741'
+
+        client_id = os.environ["SPOTIFY_CLIENT_ID"]
+        client_secret = os.environ["SPOTIFY_CLIENT_SECRET"]
         client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials(client_id, client_secret)
         spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
@@ -34,8 +31,9 @@ class taketify(spotipy.Spotify):
             return artist["name"]
 
     def spotify_sample_audio(name):
-        client_id = 'e6447eec6f8448d7a80b1c45a8237034'
-        client_secret = '98e4103299954b18a51fa991db7d6741'
+
+        client_id = os.environ["SPOTIFY_CLIENT_ID"]
+        client_secret = os.environ["SPOTIFY_CLIENT_SECRET"]
         client_credentials_manager = spotipy.oauth2.SpotifyClientCredentials(client_id, client_secret)
         spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
