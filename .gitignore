@@ -1,4 +1,4 @@
 db.sqlite3
-local_settings.py
+.app/local_settings.py
 __pycache__
 .env
