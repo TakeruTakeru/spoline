@@ -9,3 +9,4 @@ DATABASES = {
 }
 
 DEBUG = True
+SECRET_KEY = "q1shjhzv0@v_n_4sqi!6)n2j@s8c#(%_cd*(_5pesd@4*58)u%"
