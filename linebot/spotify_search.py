@@ -1,6 +1,6 @@
 import os
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentialselse
+from spotipy.oauth2 import SpotifyClientCredentials
 
 class taketify(spotipy.Spotify):
 
