@@ -1,7 +1,5 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 import json
-import random
 import requests
 from .spotify_search import taketify
 import re
@@ -33,7 +31,7 @@ def reply_image(reply_token, text, name):
             ]
     }
 
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload))
     return reply
 
 def reply_sample(reply_token, text, name):
@@ -54,24 +52,22 @@ def reply_sample(reply_token, text, name):
             ]
     }
 
-    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload)) # LINEにデータを送信
+    requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload))
     return reply
 
 def callback(request):
     reply = ""
-    request_json = json.loads(request.body.decode('utf-8')) # requestの情報をdict形式で取得
+    request_json = json.loads(request.body.decode('utf-8'))
     for e in request_json['events']:
-        reply_token = e['replyToken']  # 返信先トークンの取得
-        message_type = e['message']['type']   # typeの取
+        reply_token = e['replyToken']
+        message_type = e['message']['type']
 
         if message_type == 'text':
             text = e['message']['text']
             text_check = re.match(r"^画像", text)
             if text_check:
                 image = text.replace("画像", "")
-                reply += reply_image(reply_token, image, image)  # LINEにセリフを送信する関数
+                reply += reply_image(reply_token, image, image)
             else:
                 reply += reply_sample(reply_token, text, text)
     return HttpResponse(reply)
-
-# 先ほどのおそ松のセリフ一覧をimport
