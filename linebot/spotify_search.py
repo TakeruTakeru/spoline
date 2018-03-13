@@ -24,7 +24,7 @@ class taketify(spotipy.Spotify):
             return artist['images'][0]['url']
 
 
-    def spotify_sample_audio(slef, name):
+    def spotify_sample_audio(self, name):
 
         spotify = self.spotify_security()
         search_str = name
