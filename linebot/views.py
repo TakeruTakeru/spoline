@@ -20,7 +20,8 @@ def index(request):
 
 def reply_image(reply_token, text, name):
     artist = name
-    reply = taketify.spotify_image(artist)
+    rep = taketify()
+    reply = rep.spotify_image(artist)
     payload = {
           "replyToken":reply_token,
           "messages":[
@@ -38,7 +39,8 @@ def reply_image(reply_token, text, name):
 def reply_sample(reply_token, text, name):
 
     artist = name
-    url_before = taketify.spotify_sample_audio(artist)
+    url_before_before = taketify()
+    url_before = url_before_before.spotify_sample_audio(artist)
     client_id = os.environ["SPOTIFY_CLIENT_ID"]
     del_str = "?cid=" + client_id
     reply = url_before.replace(del_str, "")
