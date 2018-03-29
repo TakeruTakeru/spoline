@@ -77,13 +77,15 @@ def leave_groups(id):
     try:
         line_bot_api.leave_group(id)
     except LineBotApiError as e:
+        raise e
 
 def leave_rooms(id):
     line_bot_api = LineBotApi(HEADER["Authorization"])
     try:
         line_bot_api.leave_room(id)
     except LineBotApiError as e:
-
+        raise e
+        
 def callback(request):
     '''
     '''
