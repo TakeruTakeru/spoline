@@ -85,6 +85,8 @@ def leave_rooms(id):
     except LineBotApiError as e:
 
 def callback(request):
+    '''
+    '''
     reply = ""
     request_json = json.loads(request.body.decode('utf-8'))
     for e in request_json['events']:
