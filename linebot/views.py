@@ -103,8 +103,6 @@ def callback(request):
                 room_id = e["source"]["roomId"]
                 leave_group(room_id)
 
-            else:
-                continue
 
         if message_type == 'text':
             text = e['message']['text']
