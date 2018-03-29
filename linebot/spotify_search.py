@@ -66,11 +66,10 @@ class Goodbye(pykakasi.kakasi):
     def check(self, chat):
         waruguchi = [
         'gm', 'bai', 'bye', 'www', 'sine', 'gomi',
-         'kunna', 'deteke', 'kikasaru', 'sayonara',
-         'sarusine', 'tukaenai'
-         ]
-         text_sent = self.kakasi_set(chat)
-         flag = False
-         for i in waruguchi:
-             if re.search(i, text_sent):
-                 flag = True
+        'kunna', 'deteke', 'kikasaru', 'sayonara',
+        'sarusine', 'tukaenai']
+        text_sent = self.kakasi_set(chat)
+        flag = False
+        for i in waruguchi:
+            if re.search(i, text_sent):
+                flag = True
