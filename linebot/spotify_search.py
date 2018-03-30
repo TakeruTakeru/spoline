@@ -73,3 +73,36 @@ class Goodbye():
         for i in waruguchi:
             if re.search(i, text_sent):
                 flag = True
+                
+class LineBotApi():
+        def leave_group(self, group_id, timeout=None):
+            """Call leave group API.
+            https://devdocs.line.me/en/#leave
+            Leave a group.
+            :param str group_id: Group ID
+            :param timeout: (optional) How long to wait for the server
+                to send data before giving up, as a float,
+                or a (connect timeout, read timeout) float tuple.
+                Default is self.http_client.timeout
+            :type timeout: float | tuple(float, float)
+            """
+            self._post(
+                '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
+                timeout=timeout
+            )
+
+        def leave_room(self, room_id, timeout=None):
+            """Call leave room API.
+            https://devdocs.line.me/en/#leave
+            Leave a room.
+            :param str room_id: Room ID
+            :param timeout: (optional) How long to wait for the server
+                to send data before giving up, as a float,
+                or a (connect timeout, read timeout) float tuple.
+                Default is self.http_client.timeout
+            :type timeout: float | tuple(float, float)
+            """
+            self._post(
+                '/v2/bot/room/{room_id}/leave'.format(room_id=room_id),
+                timeout=timeout
+            )

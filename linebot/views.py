@@ -1,11 +1,9 @@
 from django.http import HttpResponse
 import json
 import requests
-from .spotify_search import taketify, Goodbye
+from .spotify_search import taketify, Goodbye, LineBotApi
 import re
 import os
-from linebot import LineBotApi
-from linebot.exceptions import LineBotApiError
 from pykakasi import kakasi
 
 REPLY_ENDPOINT = 'https://api.line.me/v2/bot/message/reply'
@@ -72,20 +70,7 @@ def reply_sample(reply_token, text, name):
     requests.post(REPLY_ENDPOINT, headers=HEADER, data=json.dumps(payload))
     return reply
 
-def leave_groups(id):
-    line_bot_api = LineBotApi(HEADER["Authorization"])
-    try:
-        line_bot_api.leave_group(id)
-    except LineBotApiError as e:
-        raise e
 
-def leave_rooms(id):
-    line_bot_api = LineBotApi(HEADER["Authorization"])
-    try:
-        line_bot_api.leave_room(id)
-    except LineBotApiError as e:
-        raise e
-        
 def callback(request):
     '''
     '''
@@ -101,11 +86,13 @@ def callback(request):
 
             if judge == True and e["source"]["type"] == "group":
                 group_id = e["source"]["groupId"]
-                leave_groups(group_id)
+                check_out = LineBotApi()
+                check_out.leave_group(group_id)
 
             if judge == True and e["source"]["type"] == "room":
                 room_id = e["source"]["roomId"]
-                leave_group(room_id)
+                check_out = LineBotApi()
+                check_out.leave_room(room_id)
 
 
         if message_type == 'text':
