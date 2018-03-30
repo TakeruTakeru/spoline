@@ -51,7 +51,7 @@ class taketify(spotipy.Spotify):
         return a
 
 
-class Goodbye(pykakasi.kakasi):
+class Goodbye():
 
     def kakasi_set(self, target):
         target = str(target)
