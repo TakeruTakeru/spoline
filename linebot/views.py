@@ -87,7 +87,7 @@ def callback(request):
             if judge == True and e["source"]["type"] == "group":
                 group_id = e["source"]["groupId"]
                 check_out = LineBotApi()
-                check_out.leave_group(group_id)
+                check_out.leave_group(group_id, reply_token)
 
             if judge == True and e["source"]["type"] == "room":
                 room_id = e["source"]["roomId"]
