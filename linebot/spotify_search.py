@@ -84,10 +84,10 @@ class LineBotApi():
         response = requests.post(
             url, headers=headers, data=data, timeout=timeout
         )
+        print("what!")
         return response
 
     def leave_group(self, group_id, timeout=None):
-        print("check")
         self._post(
             '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
             timeout=timeout
