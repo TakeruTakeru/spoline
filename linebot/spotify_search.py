@@ -78,14 +78,14 @@ class Goodbye():
 
 class LineBotApi():
 
-    def _post(self, path, data=None, timeout=None):
+    def _post(self, path, data=None, token, timeout=None):
         url = "https://api.line.me" + path
         headers = {
         'Content-Type': 'application/json',
         "Authorization": "Bearer" + os.environ["LINE_TOKEN"]
         }
         payload = {
-            "replyToken": reply_token
+            "replyToken": token
         }
 
         response = requests.post(
@@ -94,9 +94,10 @@ class LineBotApi():
         print(response)
         return response
 
-    def leave_group(self, group_id, timeout=None):
+    def leave_group(self, group_id, token, timeout=None):
         self._post(
             '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
+            token=token,
             timeout=timeout
             )
 
