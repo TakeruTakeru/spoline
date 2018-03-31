@@ -83,9 +83,6 @@ def callback(request):
             check = Goodbye()
             text = e["message"]["text"]
             judge = check.check(text)
-            if judge == True:
-                print("hi im here!")
-
 
             if judge == True and e["source"]["type"] == "group":
                 group_id = e["source"]["groupId"]
