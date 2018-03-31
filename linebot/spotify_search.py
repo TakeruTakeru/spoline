@@ -101,8 +101,9 @@ class LineBotApi():
             timeout=timeout
             )
 
-    def leave_room(self, room_id, timeout=None):
+    def leave_room(self, room_id, token, timeout=None):
         self._post(
             '/v2/bot/room/{room_id}/leave'.format(room_id=room_id),
+            token=token,
             timeout=timeout
             )
