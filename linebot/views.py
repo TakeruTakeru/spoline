@@ -92,7 +92,7 @@ def callback(request):
             if judge == True and e["source"]["type"] == "room":
                 room_id = e["source"]["roomId"]
                 check_out = LineBotApi()
-                check_out.leave_room(room_id)
+                check_out.leave_room(room_id, reply_token)
 
 
         if message_type == 'text':
