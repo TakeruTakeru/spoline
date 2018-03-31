@@ -80,10 +80,12 @@ def callback(request):
         reply_token = e['replyToken']
         message_type = e['message']['type']
         if e["source"]["type"] != "user" and message_type == "text":
-            print("check")
             check = Goodbye()
             text = e["message"]["text"]
             judge = check.check(text)
+            if judge == True:
+                print("hi im here!")
+
 
             if judge == True and e["source"]["type"] == "group":
                 group_id = e["source"]["groupId"]
