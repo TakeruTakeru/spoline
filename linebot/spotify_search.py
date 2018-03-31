@@ -90,11 +90,9 @@ class LineBotApi():
             "replyToken": token
         }
 
-        response = requests.post(
+        requests.post(
             url, headers=headers, data=json.dumps(payload), timeout=timeout
         )
-        print(response)
-        return response
 
     def leave_group(self, group_id, token, timeout=None):
         print(group_id)
