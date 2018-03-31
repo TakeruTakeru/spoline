@@ -76,8 +76,7 @@ class Goodbye():
                 flag = True
 
 class LineBotApi():
-
-        def _post(self, path, data=None, timeout=None):
+    def _post(self, path, data=None, timeout=None):
         url = "https://api.line.me" + path
         headers = {'Content-Type': 'application/json'}
         headers.update(self.headers)
@@ -87,15 +86,14 @@ class LineBotApi():
         )
         return response
 
-        def leave_group(self, group_id, timeout=None):
-
-            self._post(
-                '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
-                timeout=timeout
+    def leave_group(self, group_id, timeout=None):
+        self._post(
+            '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
+            timeout=timeout
             )
 
-        def leave_room(self, room_id, timeout=None):
-            self._post(
-                '/v2/bot/room/{room_id}/leave'.format(room_id=room_id),
-                timeout=timeout
+    def leave_room(self, room_id, timeout=None):
+        self._post(
+            '/v2/bot/room/{room_id}/leave'.format(room_id=room_id),
+            timeout=timeout
             )
