@@ -78,7 +78,7 @@ class Goodbye():
 
 class LineBotApi():
 
-    def _post(self, path, data=None, token, timeout=None):
+    def _post(self, path, token, data=None, timeout=None):
         url = "https://api.line.me" + path
         headers = {
         'Content-Type': 'application/json',
