@@ -85,6 +85,7 @@ class LineBotApi():
         'Content-Type': 'application/json',
         "Authorization": "Bearer" + os.environ["LINE_TOKEN"]
         }
+        print(token)
         payload = {
             "replyToken": token
         }
@@ -96,6 +97,7 @@ class LineBotApi():
         return response
 
     def leave_group(self, group_id, token, timeout=None):
+        print(group_id)
         self._post(
             '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
             token=token,
