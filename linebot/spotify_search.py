@@ -77,15 +77,19 @@ class Goodbye():
         return flag
 
 class LineBotApi():
+
     def _post(self, path, data=None, timeout=None):
         url = "https://api.line.me" + path
         headers = {
         'Content-Type': 'application/json',
         "Authorization": "Bearer" + os.environ["LINE_TOKEN"]
         }
+        payload = {
+            "replyToken": reply_token
+        }
 
         response = requests.post(
-            url, headers=headers, data=data, timeout=timeout
+            url, headers=headers, data=json.dumps(payload), timeout=timeout
         )
         print(response)
         return response
