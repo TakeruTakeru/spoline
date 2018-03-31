@@ -87,6 +87,7 @@ class LineBotApi():
         return response
 
     def leave_group(self, group_id, timeout=None):
+        print("check")
         self._post(
             '/v2/bot/group/{group_id}/leave'.format(group_id=group_id),
             timeout=timeout
