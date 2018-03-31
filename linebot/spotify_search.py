@@ -83,17 +83,15 @@ class LineBotApi():
         url = "https://api.line.me" + path
         headers = {
         'Content-Type': 'application/json',
-        "Authorization": "Bearer" + os.environ["LINE_TOKEN"]
+        "Authorization": "Bearer " + os.environ["LINE_TOKEN"]
         }
-        print(token)
         payload = {
             "replyToken": token
         }
 
-        request = requests.post(
+        requests.post(
             url, headers=headers, data=json.dumps(payload), timeout=timeout
         )
-        print(request)
 
     def leave_group(self, group_id, token, timeout=None):
         print(group_id)
