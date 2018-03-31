@@ -74,6 +74,7 @@ class Goodbye():
         for i in waruguchi:
             if re.search(i, text_sent):
                 flag = True
+        return flag
 
 class LineBotApi():
     def _post(self, path, data=None, timeout=None):
