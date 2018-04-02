@@ -1,5 +1,5 @@
 db.sqlite3
-.app/local_settings.py
+local_settings.py
 __pycache__
 .env
 bin
